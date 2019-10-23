@@ -10,7 +10,6 @@ using namespace std;
 class MinMaxHeap {
 
     private:
-	void insert(int x, int index, int parent);
 	int heap[800];
 
 	public:
