@@ -29,38 +29,25 @@ void Executive::runMenu()
 {
   int choice = 0;
   bool running = true;
-  cout << "\n\n1-AddItem\n";
-  cout << "2-Delete\n";
-  cout << "3-Leaf\n";
-  cout << "4-PrintLeaf\n";
-  cout << "5-PrintTreeHeight\n";
-  cout << "6-Preorder\n";
-  cout << "7-Postorder\n";
-  cout << "8-Inorder\n";
-  cout << "9-SearchElement\n";
-  cout << "10-Exit\n";
-  cout << ">> ";
+  cout << "\n\n1 - Build Heap\n";
+  cout << "2 - Insert\n";
+  cout << "3 - Delete\n";
+  cout << "4 - Min Level Elements\n";
+  cout << "5 - Max Level Elements\n";
+  cout << "6 - Exit\n";
   cin >> choice;
 
   if (choice == 1)
-    insert();
+    buildHeap();
   else if (choice == 2)
-    deleteElement();
+    insert();
   else if (choice == 3)
-    leaf();
+    deleteElement();
   else if (choice == 4)
-    printLeafs();
+    minLevelElements();
   else if (choice == 5)
-    height();
+    maxLevelElements();
   else if (choice == 6)
-    preorder();
-  else if (choice == 7)
-    postorder();
-  else if (choice == 8)
-    inorder();
-  else if (choice == 9)
-    search();
-  else if (choice == 10)
     running = false;
   else
     cout << "\nChoose a menu item from 1-9\n";
@@ -69,3 +56,22 @@ void Executive::runMenu()
     runMenu();
 }
 
+void Executive::insert()
+{
+}
+
+void Executive::deleteElement()
+{
+}
+
+void Executive::buildHeap()
+{
+}
+
+void Executive::minLevelElements()
+{
+}
+
+void Executive::maxLevelElements()
+{
+}

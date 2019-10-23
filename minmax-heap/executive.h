@@ -8,7 +8,7 @@ class Executive
 {
 
 private:
-	BiSearchTree *myHeap = nullptr;
+	minMaxHeap *myHeap = nullptr;
 
 public:
 	Executive(string filename);
@@ -19,5 +19,10 @@ public:
 	void insert();
 
 	void deleteElement();
-};
+	
+	void minLevelElements();
+
+	void maxLevelElements();
+
+	void buildHeap();
 #endif
