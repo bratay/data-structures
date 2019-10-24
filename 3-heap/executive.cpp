@@ -7,6 +7,7 @@ using namespace std;
 
 Executive::Executive(string filename)
 {
+
   //.myTree = new BiSearchTree();
   // string curInput;
 
@@ -18,60 +19,75 @@ Executive::Executive(string filename)
   //   myTree->insert(curInput);
   // }
 
-  runMenu();
+  run();
 }
-
 Executive::~Executive()
 {
 }
 
-void Executive::runMenu()
+void Executive::run()
 {
   int choice = 0;
-  bool running = true;
-  cout << "\n\n1 - Build Heap\n";
-  cout << "2 - Insert\n";
-  cout << "3 - Delete\n";
-  cout << "4 - Min Level Elements\n";
-  cout << "5 - Max Level Elements\n";
-  cout << "6 - Exit\n";
-  cin >> choice;
+  do
+  {
+    std::cout << "1 - Insert\n"
+              << "2 - Delete Min\n"
+              << "3 - Find Min\n"
+              << "4 - Find Max\n"
+              << "5 - Delete Max\n"
+              << "6 - Level Order\n"
+              << "7 - Exit\n"
+              << "choice > ";
+    std::cin >> choice;
 
-  if (choice == 1)
-    buildHeap();
-  else if (choice == 2)
-    insert();
-  else if (choice == 3)
-    deleteElement();
-  else if (choice == 4)
-    minLevelElements();
-  else if (choice == 5)
-    maxLevelElements();
-  else if (choice == 6)
-    running = false;
-  else
-    cout << "\nChoose a menu item from 1-9\n";
-
-  if (running == true)
-    runMenu();
-}
-
-void Executive::insert()
-{
-}
-
-void Executive::deleteElement()
-{
-}
-
-void Executive::buildHeap()
-{
-}
-
-void Executive::minLevelElements()
-{
-}
-
-void Executive::maxLevelElements()
-{
+    int value;
+    switch (choice)
+    {
+    case 1:
+      std::cout << "Insert value: ";
+      std::cin >> value;
+      min.Insert(value);
+      max.Insert(value);
+      break;
+    case 2:
+      std::cout << "Deleting min from MinHeap\n";
+      min.DeleteMin();
+      min.LevelOrder();
+      std::cout << "Deleting min from MaxHeap\n";
+      max.DeleteMin();
+      max.LevelOrder();
+      break;
+    case 3:
+      value = min.FindMin();
+      std::cout << "MinHeap min value: " << value << std::endl;
+      value = max.FindMin();
+      std::cout << "MaxHeap min value: " << value << std::endl;
+      break;
+    case 4:
+      value = min.FindMax();
+      std::cout << "MinHeap max value: " << value << std::endl;
+      value = max.FindMax();
+      std::cout << "MaxHeap max value: " << value << std::endl;
+      break;
+    case 5:
+      std::cout << "Deleting max from MinHeap\n";
+      min.DeleteMax();
+      min.LevelOrder();
+      std::cout << "Deleting max from MaxHeap\n";
+      max.DeleteMax();
+      max.LevelOrder();
+      break;
+    case 6:
+      std::cout << "MinHeap LevelOrder\n";
+      min.LevelOrder();
+      std::cout << "MaxHeap LevelOrder\n";
+      max.LevelOrder();
+      break;
+    case 7:
+      std::cout << "Exiting...\n";
+      break;
+    default:
+      std::cout << "Invalid choice\n";
+    }
+  } while (choice != 7);
 }
