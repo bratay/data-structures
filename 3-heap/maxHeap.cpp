@@ -3,15 +3,13 @@
 
 using namespace std;
 
-MinHeap::MaxHeap()
+MaxHeap::MaxHeap()
 {
     for (int i = 0; i < 800; i++)
         heap[i] = INT_MAX;
 }
 
-bool MaxHeap::isEmpty()
-{
-}
+bool MaxHeap::isEmpty(){ return (size == 0); }
 
 void MaxHeap::isMax(int val) {}
 

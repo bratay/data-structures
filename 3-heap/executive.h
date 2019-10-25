@@ -10,12 +10,13 @@ class Executive
 {
 
 private:
-	minHeap *min = nullptr;
-	maxHeap *max = nullptr;
+	MinHeap *min = nullptr;
+	MaxHeap *max = nullptr;
 
 public:
 	Executive(string filename);
 	~Executive();
 
 	void run();
+};
 #endif

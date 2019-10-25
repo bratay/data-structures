@@ -11,6 +11,7 @@ class MaxHeap {
 
     private:
 	int heap[800];
+	int size;
 
 	public:
     MaxHeap();
