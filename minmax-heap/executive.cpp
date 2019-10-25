@@ -40,7 +40,7 @@ void Executive::runMenu()
   if (choice == 1)
     buildHeap();
   else if (choice == 2)
-    insert();
+    insertElement();
   else if (choice == 3)
     deleteElement();
   else if (choice == 4)
@@ -56,8 +56,14 @@ void Executive::runMenu()
     runMenu();
 }
 
-void Executive::insert()
+void Executive::insertElement()
 {
+  int newElement;
+  cout<<"Enter the element to be inserted: ";
+  cin>>newElement;
+
+  myHeap->insert(newElement);
+  cout<<to_string(newElement)<<" has been inserted successfully\n";
 }
 
 void Executive::deleteElement()

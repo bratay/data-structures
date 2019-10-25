@@ -4,6 +4,6 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-	Executive myMinMaxHeap("data.txt");
+	Executive myHeap("data.txt");
 	return (0);
 }

@@ -1,6 +1,7 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
+#include "minMaxHeap.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ class Executive
 {
 
 private:
-	minMaxHeap *myHeap = nullptr;
+	MinMaxHeap *myHeap = nullptr;
 
 public:
 	Executive(string filename);
@@ -16,7 +17,7 @@ public:
 
 	void runMenu();
 
-	void insert();
+	void insertElement();
 
 	void deleteElement();
 	
@@ -25,4 +26,5 @@ public:
 	void maxLevelElements();
 
 	void buildHeap();
+};
 #endif

@@ -13,16 +13,16 @@ bool MinMaxHeap::isEmpty()
 {
 }
 
-void MinMxHeap::isMax(int val) {}
+void MinMaxHeap::isMax(int val) {}
 
-void MinMxHeap::buildHeap(int i) {}
+void MinMaxHeap::buildHeap(int i) {}
 
-void MinMxHeap::insert(int x) {}
+void MinMaxHeap::insert(int x) {}
 
-void MinMxHeap::remove(int x) {}
+void MinMaxHeap::remove(int x) {}
 
-void MinMxHeap::deleteMin() {}
+void MinMaxHeap::deleteMin() {}
 
-void MinMxHeap::deleteMax() {}
+void MinMaxHeap::deleteMax() {}
 
-void MinMxHeap::levelorder() {}
+void MinMaxHeap::levelorder() {}

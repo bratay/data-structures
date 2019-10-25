@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <limits.h>
 
-using namespace std;
-
 class MinMaxHeap {
 
     private:
@@ -30,6 +28,5 @@ class MinMaxHeap {
 	void deleteMax();
 
 	void levelorder();
-
 };
 #endif

@@ -28,6 +28,5 @@ class MaxHeap {
 	void deleteMax();
 
 	void levelorder();
-
 };
 #endif
