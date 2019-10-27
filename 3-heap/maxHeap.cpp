@@ -44,6 +44,43 @@ void MaxHeap::insert(int newElement)
 
 bool MaxHeap::removeMax()
 {
+    if (size == 0)
+    {
+        return false;
+    }
+    else
+    {
+        cout << heap[0];
+        heap[0] = heap[size - 1];
+        size--;
+
+        //swap
+        int smallchild = 1, ParentIndex = 0;
+        bool ischange = false;
+        while (ischange == false && smallchild < size)
+        {
+            int childIndex = smallchild + 1;
+            for (int i = 1; i < 3 && childIndex < size; i++)
+            {
+                if (heap[smallchild] < heap[childIndex])
+                {
+                    smallchild = childIndex;
+                }
+                childIndex++;
+            }
+            if (heap[smallchild] < heap[ParentIndex])
+            {
+                swap(heap[smallchild], heap[ParentIndex]);
+                ParentIndex = smallchild;
+                smallchild = 3 * ParentIndex + 1;
+            }
+            else
+            {
+                ischange = true;
+            }
+        }
+        return true;
+    }
 }
 
 bool MaxHeap::removeMin()
