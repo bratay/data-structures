@@ -7,14 +7,15 @@
 
 using namespace std;
 
-class MinHeap {
+class MinHeap
+{
 
-    private:
+private:
 	int heap[800];
 	int size;
 
-	public:
-    MinHeap();
+public:
+	MinHeap();
 
 	bool isEmpty();
 

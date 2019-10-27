@@ -7,14 +7,15 @@
 
 using namespace std;
 
-class MaxHeap {
+class MaxHeap
+{
 
-    private:
+private:
 	int heap[800];
 	int size;
 
-	public:
-    MaxHeap();
+public:
+	MaxHeap();
 
 	bool isEmpty();
 
@@ -25,7 +26,7 @@ class MaxHeap {
 	void insert(int x);
 
 	bool removeMax();
-	
+
 	bool removeMin();
 
 	void deleteMax();
