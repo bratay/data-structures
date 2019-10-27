@@ -11,23 +11,23 @@ class MinHeap {
 
     private:
 	int heap[800];
+	int size;
 
 	public:
     MinHeap();
 
 	bool isEmpty();
 
-	void isMax(int val);
+	bool isMin(int val);
 
 	void buildHeap(int i);
 
 	void insert(int x);
 
-	void remove(int x);
+	bool removeMax();
 
-	void deleteMin();
+	bool removeMin();
 
 	void levelorder();
-
 };
 #endif

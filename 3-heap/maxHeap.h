@@ -18,13 +18,15 @@ class MaxHeap {
 
 	bool isEmpty();
 
-	void isMax(int val);
+	bool isMax(int val);
 
 	void buildHeap(int i);
 
 	void insert(int x);
 
-	void remove(int x);
+	bool removeMax();
+	
+	bool removeMin();
 
 	void deleteMax();
 
