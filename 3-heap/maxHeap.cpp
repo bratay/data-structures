@@ -18,7 +18,39 @@ bool MaxHeap::isMax(int val)
     return (val == heap[0]);
 }
 
-void MaxHeap::buildHeap(int i) {}
+void MaxHeap::buildHeap()
+{
+    int lastIndex = size - 1;
+    int ParentIndex = (lastIndex - 1) / 3;
+    while (ParentIndex >= 0)
+    {
+        int small = 3 * ParentIndex + 1;
+        bool ischange = false;
+        while (ischange == false && small < size)
+        {
+            int childIndex = small + 1;
+            for (int i = 1; i < 3 && childIndex < size; i++)
+            {
+                if (heap[small] < heap[childIndex])
+                {
+                    small = childIndex;
+                }
+                childIndex++;
+            }
+            if (heap[small] > heap[ParentIndex])
+            {
+                swap(heap[small], heap[ParentIndex]);
+                ParentIndex = small;
+                small = 3 * ParentIndex + 1;
+            }
+            else
+            {
+                ischange = true;
+            }
+        }
+        ParentIndex--;
+    }
+}
 
 void MaxHeap::insert(int newElement)
 {
@@ -97,7 +129,7 @@ bool MaxHeap::removeMin()
     }
 
     int lastIndex = size - 1;
-    int firstIndex = (lastIndex - 1) / 5 + 1;
+    int firstIndex = (lastIndex - 1) / 3 + 1;
     int smallestIndex = firstIndex;
     firstIndex++;
     for (int i = firstIndex; i < size; i++)

@@ -21,7 +21,7 @@ public:
 
 	bool isMax(int val);
 
-	void buildHeap(int i);
+	void buildHeap();
 
 	void insert(int x);
 

@@ -15,8 +15,38 @@ bool MinHeap::isEmpty() { return (size == 0); }
 
 bool MinHeap::isMin(int val) { return (val == heap[0]); }
 
-void MinHeap::buildHeap(int i)
+void MinHeap::buildHeap()
 {
+    int lastIndex = size - 1;
+    int ParentIndex = (lastIndex - 1) / 3;
+    while (ParentIndex >= 0)
+    {
+        int small = 3 * ParentIndex + 1;
+        bool ischange = false;
+        while (ischange == false && small < size)
+        {
+            int childIndex = small + 1;
+            for (int i = 1; i < 3 && childIndex < size; i++)
+            {
+                if (heap[small] > heap[childIndex])
+                {
+                    small = childIndex;
+                }
+                childIndex++;
+            }
+            if (heap[small] < heap[ParentIndex])
+            {
+                swap(heap[small], heap[ParentIndex]);
+                ParentIndex = small;
+                small = 3 * ParentIndex + 1;
+            }
+            else
+            {
+                ischange = true;
+            }
+        }
+        ParentIndex--;
+    }
 }
 
 void MinHeap::insert(int newElement)
@@ -55,7 +85,7 @@ bool MinHeap::removeMax()
     }
 
     int lastIndex = size - 1;
-    int firstIndex = (lastIndex - 1) / 5 + 1;
+    int firstIndex = (lastIndex - 1) / 3 + 1;
     int biggestIndex = firstIndex;
     firstIndex++;
     for (int i = firstIndex; i < size; i++)
@@ -84,24 +114,24 @@ bool MinHeap::removeMin()
         size--;
 
         //swap
-        int smallchild = 1, ParentIndex = 0;
+        int small = 1, ParentIndex = 0;
         bool ischange = false;
-        while (ischange == false && smallchild < size)
+        while (ischange == false && small < size)
         {
-            int childIndex = smallchild + 1;
+            int childIndex = small + 1;
             for (int i = 1; i < 3 && childIndex < size; i++)
             {
-                if (heap[smallchild] > heap[childIndex])
+                if (heap[small] > heap[childIndex])
                 {
-                    smallchild = childIndex;
+                    small = childIndex;
                 }
                 childIndex++;
             }
-            if (heap[smallchild] < heap[ParentIndex])
+            if (heap[small] < heap[ParentIndex])
             {
-                swap(heap[smallchild], heap[ParentIndex]);
-                ParentIndex = smallchild;
-                smallchild = 3 * ParentIndex + 1;
+                swap(heap[small], heap[ParentIndex]);
+                ParentIndex = small;
+                small = 3 * ParentIndex + 1;
             }
             else
             {
