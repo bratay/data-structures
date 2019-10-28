@@ -85,6 +85,32 @@ bool MaxHeap::removeMax()
 
 bool MaxHeap::removeMin()
 {
+    if (size == 0)
+    {
+        return false;
+    }
+    else if (size == 1)
+    {
+        heap[0] = -1;
+        size--;
+        return true;
+    }
+
+    int lastIndex = size - 1;
+    int firstIndex = (lastIndex - 1) / 5 + 1;
+    int smallestIndex = firstIndex;
+    firstIndex++;
+    for (int i = firstIndex; i < size; i++)
+    {
+        if (heap[smallestIndex] > heap[i])
+        {
+            smallestIndex = i;
+        }
+    }
+    heap[smallestIndex] = heap[size - 1];
+    size--;
+
+    return true;
 }
 
 void MaxHeap::levelorder()

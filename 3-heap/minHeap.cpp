@@ -56,18 +56,18 @@ bool MinHeap::removeMax()
 
     int lastIndex = size - 1;
     int firstIndex = (lastIndex - 1) / 5 + 1;
-    int bigIndex = firstIndex;
+    int biggestIndex = firstIndex;
     firstIndex++;
     for (int i = firstIndex; i < size; i++)
     {
-        if (heap[bigIndex] < heap[i])
+        if (heap[biggestIndex] < heap[i])
         {
-            bigIndex = i;
+            biggestIndex = i;
         }
     }
-    heap[bigIndex] = heap[size - 1];
+    heap[biggestIndex] = heap[size - 1];
     size--;
-    
+
     return true;
 }
 
