@@ -5,7 +5,7 @@ using namespace std;
 
 MaxHeap::MaxHeap()
 {
-    for (int i = 0; i < 800; i++)
+    for (int i = 0; i < 1500; i++)
         heap[i] = INT_MAX;
 
     size = 0;
@@ -86,8 +86,6 @@ bool MaxHeap::removeMax()
 bool MaxHeap::removeMin()
 {
 }
-
-void MaxHeap::deleteMax() {}
 
 void MaxHeap::levelorder()
 {

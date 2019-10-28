@@ -5,7 +5,7 @@ using namespace std;
 
 MinHeap::MinHeap()
 {
-    for (int i = 0; i < 800; i++)
+    for (int i = 0; i < 1500; i++)
         heap[i] = INT_MAX;
 
     size = 0;
@@ -43,6 +43,31 @@ void MinHeap::insert(int newElement)
 
 bool MinHeap::removeMax()
 {
+    if (size == 0)
+    {
+        return false;
+    }
+    else if (size == 1)
+    {
+        heap[0] = -1;
+        size--;
+        return true;
+    }
+
+    int lastIndex = size - 1;
+    int firstIndex = (lastIndex - 1) / 5 + 1;
+    int bigIndex = firstIndex;
+    firstIndex++;
+    for (int i = firstIndex; i < size; i++)
+    {
+        if (heap[bigIndex] < heap[i])
+        {
+            bigIndex = i;
+        }
+    }
+    heap[bigIndex] = heap[size - 1];
+    size--;
+    
     return true;
 }
 
