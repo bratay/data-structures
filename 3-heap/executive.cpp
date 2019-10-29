@@ -7,8 +7,9 @@ using namespace std;
 
 Executive::Executive(string filename)
 {
+  minHeap = new MinHeap();
+  maxHeap = new MaxHeap();
 
-  //.myTree = new BiSearchTree();
   // string curInput;
 
   // ifstream infile;
@@ -30,64 +31,61 @@ void Executive::run()
   int choice = 0;
   do
   {
-    std::cout << "1 - Insert\n"
-              << "2 - Delete Min\n"
-              << "3 - Find Min\n"
-              << "4 - Find Max\n"
-              << "5 - Delete Max\n"
-              << "6 - Level Order\n"
-              << "7 - Exit\n"
-              << "choice > ";
+    cout << "1. Insert\n"
+         << "2. Delete\n"
+         << "3. PQ_Highest\n"
+         << "4. PQ_Lowest\n"
+         << "5. Levelorder\n"
+         << "6. Time_LowestPQ\n"
+         << "7. Exit\n";
+    cout << ": ";
     std::cin >> choice;
 
-    int value;
-    //   switch (choice)
-    //   {
-    //   case 1:
-    //     std::cout << "Insert value: ";
-    //     std::cin >> value;
-    //     min.Insert(value);
-    //     max.Insert(value);
-    //     break;
-    //   case 2:
-    //     std::cout << "Deleting min from MinHeap\n";
-    //     min.DeleteMin();
-    //     min.LevelOrder();
-    //     std::cout << "Deleting min from MaxHeap\n";
-    //     max.DeleteMin();
-    //     max.LevelOrder();
-    //     break;
-    //   case 3:
-    //     value = min.FindMin();
-    //     std::cout << "MinHeap min value: " << value << std::endl;
-    //     value = max.FindMin();
-    //     std::cout << "MaxHeap min value: " << value << std::endl;
-    //     break;
-    //   case 4:
-    //     value = min.FindMax();
-    //     std::cout << "MinHeap max value: " << value << std::endl;
-    //     value = max.FindMax();
-    //     std::cout << "MaxHeap max value: " << value << std::endl;
-    //     break;
-    //   case 5:
-    //     std::cout << "Deleting max from MinHeap\n";
-    //     min.DeleteMax();
-    //     min.LevelOrder();
-    //     std::cout << "Deleting max from MaxHeap\n";
-    //     max.DeleteMax();
-    //     max.LevelOrder();
-    //     break;
-    //   case 6:
-    //     std::cout << "MinHeap LevelOrder\n";
-    //     min.LevelOrder();
-    //     std::cout << "MaxHeap LevelOrder\n";
-    //     max.LevelOrder();
-    //     break;
-    //   case 7:
-    //     std::cout << "Exiting...\n";
-    //     break;
-    //   default:
-    //     std::cout << "Invalid choice\n";
-    //   }
+    int num;
+    switch (choice)
+    {
+    case 1: //Insert
+      //start timer
+
+      //stop timer
+      break;
+    case 2: //Delete
+      num = minHeap->removeMin();
+      std::cout << num << " was delete from MinHeap\n";
+      num = maxHeap->removeMax();
+      std::cout << num << " was delete from MaxHeap\n";
+      break;
+    case 3: //pq high
+      num = minHeap->findMin();
+      std::cout << "MinHeap min value: " << num << std::endl;
+      num = maxHeap->findMin();
+      std::cout << "MaxHeap min value: " << num << std::endl;
+      break;
+    case 4: //pq low
+      num = minHeap->findMax();
+      std::cout << "MinHeap max value: " << num << std::endl;
+      num = maxHeap->findMax();
+      std::cout << "MaxHeap max value: " << num << std::endl;
+      break;
+    case 5: //level order
+      std::cout << "Deleting max from MinHeap\n";
+      minHeap->removeMax();
+      minHeap->levelorder();
+      std::cout << "Deleting max from MaxHeap\n";
+      maxHeap->removeMax();
+      maxHeap->levelorder();
+      break;
+    case 6: //time lowest
+      std::cout << "MinHeap levelorder\n";
+      minHeap->levelorder();
+      std::cout << "MaxHeap levelorder\n";
+      maxHeap->levelorder();
+      break;
+    case 7: //exit
+      std::cout << "Exiting...\n";
+      break;
+    default:
+      std::cout << "Invalid choice\n";
+    }
   } while (choice != 7);
 }

@@ -71,17 +71,28 @@ void MinHeap::insert(int newElement)
     size++;
 }
 
-bool MinHeap::removeMax()
+int MinHeap::findMin()
+{
+    return 0;
+}
+
+int MinHeap::findMax()
+{
+    return 0;
+}
+
+int MinHeap::removeMax()
 {
     if (size == 0)
     {
-        return false;
+        return -1;
     }
     else if (size == 1)
     {
+        int result = heap[0];
         heap[0] = -1;
         size--;
-        return true;
+        return result;
     }
 
     int lastIndex = size - 1;
@@ -95,17 +106,18 @@ bool MinHeap::removeMax()
             biggestIndex = i;
         }
     }
+    int result = heap[biggestIndex];
     heap[biggestIndex] = heap[size - 1];
     size--;
 
-    return true;
+    return result;
 }
 
-bool MinHeap::removeMin()
+int MinHeap::removeMin()
 {
     if (size == 0)
     {
-        return false;
+        return -1;
     }
     else
     {
@@ -116,6 +128,7 @@ bool MinHeap::removeMin()
         //swap
         int small = 1, ParentIndex = 0;
         bool ischange = false;
+        int result;
         while (ischange == false && small < size)
         {
             int childIndex = small + 1;
@@ -135,10 +148,11 @@ bool MinHeap::removeMin()
             }
             else
             {
+                result = heap[small];
                 ischange = true;
             }
         }
-        return true;
+        return result;
     }
 }
 

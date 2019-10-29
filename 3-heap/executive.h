@@ -10,8 +10,8 @@ class Executive
 {
 
 private:
-	MinHeap *min = nullptr;
-	MaxHeap *max = nullptr;
+	MinHeap *minHeap = nullptr;
+	MaxHeap *maxHeap = nullptr;
 
 public:
 	Executive(string filename);

@@ -25,9 +25,13 @@ public:
 
 	void insert(int x);
 
-	bool removeMax();
+	int findMin();
 
-	bool removeMin();
+	int findMax();
+
+	int removeMax();
+
+	int removeMin();
 
 	void levelorder();
 };
