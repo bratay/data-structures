@@ -49,6 +49,17 @@ void MinHeap::buildHeap()
     }
 }
 
+bool MinHeap::contains(int num)
+{
+    for (int cur : heap)
+    {
+        if (cur == num)
+            return true;
+    }
+
+    return false;
+}
+
 void MinHeap::insert(int newElement)
 {
     heap[size] = newElement;
@@ -137,7 +148,6 @@ int MinHeap::removeMin()
         heap[0] = heap[size - 1];
         size--;
 
-        //swap
         int small = 1, ParentIndex = 0;
         bool ischange = false;
         int result;

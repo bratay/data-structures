@@ -23,6 +23,8 @@ public:
 
 	void buildHeap();
 
+	bool contains(int num);
+
 	void insert(int x);
 
 	int findMin();

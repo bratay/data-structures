@@ -52,6 +52,17 @@ void MaxHeap::buildHeap()
     }
 }
 
+bool MaxHeap::contains(int num)
+{
+    for (int cur : heap)
+    {
+        if (cur == num)
+            return true;
+    }
+
+    return false;
+}
+
 void MaxHeap::insert(int newElement)
 {
     heap[size] = newElement;
@@ -82,9 +93,9 @@ int MaxHeap::findMin()
         return heap[0];
 
     int smallest;
-    for(int cur : heap)
+    for (int cur : heap)
     {
-        if(cur > smallest)
+        if (cur > smallest)
             smallest = cur;
     }
 
@@ -108,7 +119,6 @@ int MaxHeap::removeMax()
         heap[0] = heap[size - 1];
         size--;
 
-        //swap
         int largeChild = 1, ParentIndex = 0;
         bool ischange = false;
         int result;
