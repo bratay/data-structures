@@ -73,12 +73,24 @@ void MinHeap::insert(int newElement)
 
 int MinHeap::findMin()
 {
-    return 0;
+    return (size == 0) ? -1 : heap[0];
 }
 
 int MinHeap::findMax()
 {
-    return 0;
+    if (size == 0)
+        return -1;
+    else if (size == 1)
+        return heap[0];
+
+    int biggest;
+    for(int cur : heap)
+    {
+        if(cur < biggest)
+            biggest = cur;
+    }
+
+    return biggest;
 }
 
 int MinHeap::removeMax()
