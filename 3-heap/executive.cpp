@@ -12,20 +12,23 @@ Executive::Executive(string filename)
   minHeap = new MinHeap();
   maxHeap = new MaxHeap();
 
-  // string curInput;
+  string curInput;
 
-  // ifstream infile;
-  // infile.open(filename);
+  ifstream infile;
+  infile.open(filename);
 
-  // while(getline(infile, curInput, ','))
-  // {
-  //   myTree->insert(curInput);
-  // }
+  while (getline(infile, curInput, ','))
+  {
+    minHeap->insert(stoi(curInput));
+    maxHeap->insert(stoi(curInput));
+  }
 
   run();
 }
 Executive::~Executive()
 {
+  delete minHeap;
+  delete maxHeap;
 }
 
 void Executive::run()
@@ -42,6 +45,9 @@ void Executive::run()
          << "7. Exit\n";
     cout << ": ";
     cin >> choice;
+
+    maxHeap->buildHeap();
+    minHeap->buildHeap();
 
     int num;
     clock_t start;
@@ -96,20 +102,25 @@ void Executive::run()
       break;
     case 3: //pq high
       num = minHeap->findMin();
-      cout << "MinHeap min value: " << num << endl;
-      num = maxHeap->findMin();
-      cout << "MaxHeap max value: " << num << endl;
-      break;
-    case 4: //pq low
-      num = minHeap->findMax();
+      if(num == -1)
+      {
+        cout<<"Heap size is 0";
+        break;
+      }
       cout << "MinHeap min value: " << num << endl;
       num = maxHeap->findMax();
       cout << "MaxHeap max value: " << num << endl;
       break;
+    case 4: //pq low
+      num = minHeap->findMax();
+      cout << "MinHeap max value: " << num << endl;
+      num = maxHeap->findMin();
+      cout << "MaxHeap min value: " << num << endl;
+      break;
     case 5: //level order
-      cout << "MinHeap levelorder\n";
+      cout << "\nMinHeap levelorder\n";
       minHeap->levelorder();
-      cout << "MaxHeap levelorder\n";
+      cout << "\nMaxHeap levelorder\n";
       maxHeap->levelorder();
       break;
     case 6: //time lowest
@@ -126,5 +137,6 @@ void Executive::run()
     default:
       cout << "Invalid choice\n";
     }
+    cout << "\n\n";
   } while (choice != 7);
 }

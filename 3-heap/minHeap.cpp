@@ -94,14 +94,19 @@ int MinHeap::findMax()
     else if (size == 1)
         return heap[0];
 
-    int biggest;
-    for(int cur : heap)
+    int lastIndex = size - 1;
+    int firstIndex = (lastIndex - 1) / 3 + 1;
+    int biggestIndex = firstIndex;
+    firstIndex++;
+    for (int i = firstIndex; i < size; i++)
     {
-        if(cur < biggest)
-            biggest = cur;
+        if (heap[biggestIndex] < heap[i])
+        {
+            biggestIndex = i;
+        }
     }
 
-    return biggest;
+    return heap[biggestIndex];
 }
 
 int MinHeap::removeMax()
@@ -182,6 +187,6 @@ void MinHeap::levelorder()
 {
     for (int i = 0; i < size; i++)
     {
-        cout << heap[i] << " ,";
+        cout << heap[i] << ", ";
     }
 }
