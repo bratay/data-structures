@@ -11,12 +11,6 @@ MinMaxHeap::MinMaxHeap()
     size = 0;
 }
 
-bool MinMaxHeap::isEmpty()
-{
-}
-
-void MinMaxHeap::isMax(int val) {}
-
 void MinMaxHeap::buildHeap(int i) {}
 
 void MinMaxHeap::insert(int newVal)
@@ -31,8 +25,48 @@ void MinMaxHeap::insert(int newVal)
 
 void MinMaxHeap::remove(int val) {}
 
-void MinMaxHeap::deleteMin() {}
+void MinMaxHeap::minTraversal()
+{
+    if (size == 0)
+        return;
 
-void MinMaxHeap::deleteMax() {}
+    int length = 1;
+    bool minLevel = true;
 
-void MinMaxHeap::levelorder() {}
+    for (int i = 0; i < size; i++)
+    {
+        int count = 0;
+        while (count < length && i < size && minLevel)
+        {
+            cout << heap[i] << ", ";
+            count++;
+            i++;
+        }
+        cout << "\n";
+        length *= 2;
+        minLevel = !minLevel;
+    }
+}
+
+void MinMaxHeap::maxTraversal()
+{
+    if (size == 0)
+        return;
+
+    int length = 1;
+    bool maxLevel = false;
+
+    for (int i = 0; i < size; i++)
+    {
+        int count = 0;
+        while (count < length && i < size && maxLevel)
+        {
+            cout << heap[i] << ", ";
+            count++;
+            i++;
+        }
+        cout << "\n";
+        length *= 2;
+        maxLevel = !maxLevel;
+    }
+}

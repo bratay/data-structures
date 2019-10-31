@@ -15,19 +15,15 @@ private:
 public:
 	MinMaxHeap();
 
-	bool isEmpty();
-
-	void isMax(int val);
-
 	void buildHeap(int i);
 
 	void insert(int newVal);
 
 	void remove(int val);
 
-	void deleteMin();
+	void minTraversal();
 
-	void deleteMax();
+	void maxTraversal();
 
 	void levelorder();
 };
