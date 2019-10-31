@@ -59,25 +59,50 @@ void Executive::runMenu()
 void Executive::insertElement()
 {
   int newElement;
-  cout<<"Enter the element to be inserted: ";
-  cin>>newElement;
+  cout << "Enter the element to be inserted: ";
+  cin >> newElement;
 
-  myHeap->insert(newElement);
-  cout<<to_string(newElement)<<" has been inserted successfully\n";
+  bool success = myHeap->insert(newElement);
+
+  if (success)
+  {
+    cout << to_string(newElement) << " has been inserted successfully\n";
+  }
+  else
+  {
+    cout << to_string(newElement) << " is already in heap\n";
+  }
 }
 
 void Executive::deleteElement()
 {
+  int val;
+  cout << "Enter the element to be removed: ";
+  cin >> val;
+
+  bool success = myHeap->remove(val);
+
+  if (success)
+  {
+    cout << to_string(val) << " has been removed successfully\n";
+  }
+  else
+  {
+    cout << to_string(val) << " was nit found\n";
+  }
 }
 
 void Executive::buildHeap()
 {
+  
 }
 
 void Executive::minLevelElements()
 {
+  myHeap->minTraversal();
 }
 
 void Executive::maxLevelElements()
 {
+  myHeap->maxTraversal();
 }

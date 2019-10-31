@@ -17,14 +17,16 @@ public:
 
 	void buildHeap(int i);
 
-	void insert(int newVal);
+	bool contains(int val);
 
-	void remove(int val);
+	bool insert(int newVal);
+
+	bool remove(int val);
+
+	void showHeap();
 
 	void minTraversal();
 
 	void maxTraversal();
-
-	void levelorder();
 };
 #endif
