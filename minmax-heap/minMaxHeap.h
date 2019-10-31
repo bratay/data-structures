@@ -5,13 +5,15 @@
 #include <stdlib.h>
 #include <limits.h>
 
-class MinMaxHeap {
+class MinMaxHeap
+{
 
-    private:
-	int heap[800];
+private:
+	int heap[1500];
+	int size;
 
-	public:
-    MinMaxHeap();
+public:
+	MinMaxHeap();
 
 	bool isEmpty();
 
@@ -19,9 +21,9 @@ class MinMaxHeap {
 
 	void buildHeap(int i);
 
-	void insert(int x);
+	void insert(int newVal);
 
-	void remove(int x);
+	void remove(int val);
 
 	void deleteMin();
 
