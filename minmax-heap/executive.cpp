@@ -7,16 +7,16 @@ using namespace std;
 
 Executive::Executive(string filename)
 {
-  //.myTree = new BiSearchTree();
-  // string curInput;
+  myHeap = new MinMaxHeap();
+  string curInput;
 
-  // ifstream infile;
-  // infile.open(filename);
+  ifstream infile;
+  infile.open(filename);
 
-  // while(getline(infile, curInput, ','))
-  // {
-  //   myTree->insert(curInput);
-  // }
+  while(getline(infile, curInput, ','))
+  {
+    myHeap->insert(stoi(curInput));
+  }
 
   runMenu();
 }
@@ -94,7 +94,7 @@ void Executive::deleteElement()
 
 void Executive::buildHeap()
 {
-  
+  myHeap->showHeap();
 }
 
 void Executive::minLevelElements()

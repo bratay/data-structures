@@ -17,6 +17,8 @@ public:
 
 	void buildHeap(int i);
 
+	int getMinChild(int index);
+
 	bool contains(int val);
 
 	bool insert(int newVal);

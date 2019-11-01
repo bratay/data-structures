@@ -1,4 +1,5 @@
 #include <string>
+#include <math.h>
 #include "minMaxHeap.h"
 
 using namespace std;
@@ -11,9 +12,64 @@ MinMaxHeap::MinMaxHeap()
     size = 0;
 }
 
-void MinMaxHeap::buildHeap(int i) 
+void MinMaxHeap::buildHeap(int index)
 {
-    
+    int min = getMinChild(index);
+    if (2 * index + 1 >= size)
+        return;
+
+    if (int(trunc(log2(index + 1))) % 2 == 0)
+    {
+        if (heap[min] < heap[index])
+        {
+            int temp = heap[index];
+            heap[index] = heap[min];
+            heap[min] = temp;
+            buildHeap(index);
+            buildHeap((min - 1) / 2);
+            buildHeap(min);
+        }
+    }
+    else
+    {
+        if (heap[min] > heap[index])
+        {
+            int temp = heap[index];
+            heap[index] = heap[min];
+            heap[min] = temp;
+            buildHeap(index);
+            buildHeap((min - 1) / 2);
+            buildHeap(min);
+        }
+    }
+}
+
+int MinMaxHeap::getMinChild(int index)
+{
+    int min = 2 * index + 1;
+    if (2 * index + 1 >= size)
+        return 2 * index + 1;
+
+    for (int i = 1; i <= 2; i++)
+    {
+        if (int(trunc(log2(index + 1))) % 2 == 0)
+        {
+            min = (heap[2 * index + i] < heap[min] && 2 * index + i < size) ? 2 * index + i : min;
+            for (int x = 1; x <= 2; x++)
+            {
+                min = (heap[2 * (2 * index + i) + x] < heap[min] && 2 * (2 * index + i) + x < size) ? 2 * (2 * index + i) + x : min;
+            }
+        }
+        else
+        {
+            min = (heap[2 * index + i] > heap[min] && 2 * index + i < size) ? 2 * index + i : min;
+            for (int x = 1; x <= 2; x++)
+            {
+                min = (heap[2 * (2 * index + i) + x] > heap[min] && 2 * (2 * index + i) + x < size) ? 2 * (2 * index + i) + x : min;
+            }
+        }
+    }
+    return min;
 }
 
 bool MinMaxHeap::contains(int val)
