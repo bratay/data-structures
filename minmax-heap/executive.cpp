@@ -35,7 +35,9 @@ void Executive::runMenu()
   cout << "4 - Min Level Elements\n";
   cout << "5 - Max Level Elements\n";
   cout << "6 - Exit\n";
+  cout<<">>> ";
   cin >> choice;
+  cout<<"\n";
 
   if (choice == 1)
     buildHeap();
@@ -88,7 +90,7 @@ void Executive::deleteElement()
   }
   else
   {
-    cout << to_string(val) << " was nit found\n";
+    cout << to_string(val) << " was not found\n";
   }
 }
 

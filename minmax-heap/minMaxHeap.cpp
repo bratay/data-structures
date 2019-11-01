@@ -80,30 +80,27 @@ bool MinMaxHeap::contains(int val)
     for (int i = 0; i < size; i++)
     {
         if (heap[i] == val)
-            return false;
+            return true;
     }
 
-    return true;
+    return false;
 }
 
 bool MinMaxHeap::insert(int newVal)
 {
-    if (contains(newVal))
-        return false;
-
-    heap[size] = newVal;
-    for (int i = 0; i > size / 2; i++)
+    size++;
+    heap[size - 1] = newVal;
+    for (int i = (size - 1) / 2; i >= 0; i--)
     {
         buildHeap(i);
     }
 
-    size++;
     return true;
 }
 
 bool MinMaxHeap::remove(int val)
 {
-    if (size == 0)
+    if (!contains(val))
         return false;
 
     for (int i = 0; i < size; i++)
@@ -113,8 +110,7 @@ bool MinMaxHeap::remove(int val)
             if (i != size - 1)
             {
                 heap[i] = heap[size - 1];
-                heap[size - 1] = INT_MAX;
-                for (int i = 0; i > size; i++)
+                for (int i = size; i >= 0; i--)
                 {
                     buildHeap(i);
                 }
@@ -124,7 +120,6 @@ bool MinMaxHeap::remove(int val)
                 heap[size - 1] = INT_MAX;
             }
             size--;
-            remove(val);
             return true;
         }
     }
@@ -148,6 +143,7 @@ void MinMaxHeap::showHeap()
             count++;
             i++;
         }
+        i--;
         cout << "\n";
         length *= 2;
     }
@@ -164,14 +160,16 @@ void MinMaxHeap::minTraversal()
     for (int i = 0; i < size; i++)
     {
         int count = 0;
-        while (count < length && i < size && minLevel)
+        while (count < length && i < size)
         {
-            cout << heap[i] << ", ";
+            if (minLevel)
+                cout << heap[i] << ", ";
             count++;
             i++;
         }
+        i--;
         cout << "\n";
-        length *= 2;
+        length = length * 2;
         minLevel = !minLevel;
     }
 }
@@ -187,12 +185,14 @@ void MinMaxHeap::maxTraversal()
     for (int i = 0; i < size; i++)
     {
         int count = 0;
-        while (count < length && i < size && maxLevel)
+        while (count < length && i < size)
         {
-            cout << heap[i] << ", ";
+            if (maxLevel)
+                cout << heap[i] << ", ";
             count++;
             i++;
         }
+        i--;
         cout << "\n";
         length *= 2;
         maxLevel = !maxLevel;
