@@ -1,5 +1,5 @@
-labseven: main.o executive.o minMaxHeap.o
-	g++ -std=c++11 -g -Wall main.o executive.o minMaxHeap.o -o labseven
+labeight: main.o executive.o minLeftistHeap.o
+	g++ -std=c++11 -g -Wall main.o executive.o minLeftistHeap.o -o labeight
 
 main.o: main.cpp executive.h
 	g++ -std=c++11 -g -Wall -c main.cpp
@@ -7,8 +7,8 @@ main.o: main.cpp executive.h
 executive.o: executive.h executive.cpp
 	g++ -std=c++11 -g -Wall -c executive.cpp
 
-minMaxHeap.o: minMaxHeap.cpp minMaxHeap.h
-	g++ -std=c++11 -g -Wall -c minMaxHeap.cpp
+minLeftistHeap.o: minLeftistHeap.cpp minLeftistHeap.h
+	g++ -std=c++11 -g -Wall -c minLeftistHeap.cpp
 
 clean:
-	rm *.o labseven
+	rm *.o labeight

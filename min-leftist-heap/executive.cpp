@@ -1,4 +1,4 @@
-#include "executive.h"
+#include "minLeftistHeap.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +13,7 @@ Executive::Executive(string filename)
   ifstream infile;
   infile.open(filename);
 
-  while(getline(infile, curInput, ','))
+  while (getline(infile, curInput, ','))
   {
     myHeap->insert(stoi(curInput));
   }
@@ -29,15 +29,15 @@ void Executive::runMenu()
 {
   int choice = 0;
   bool running = true;
-  cout << "\n\n1 - Build Heap\n";
+  cout << "\n1 - Build Heap\n";
   cout << "2 - Insert\n";
   cout << "3 - Delete\n";
   cout << "4 - Min Level Elements\n";
   cout << "5 - Max Level Elements\n";
   cout << "6 - Exit\n";
-  cout<<">>> ";
+  cout << ">>> ";
   cin >> choice;
-  cout<<"\n";
+  cout << "\n";
 
   if (choice == 1)
     buildHeap();
