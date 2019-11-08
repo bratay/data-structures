@@ -1,7 +1,7 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
-#include "minLeftistHeap.h"
+#include "MinLeftistHeap.h"
 
 using namespace std;
 
@@ -20,19 +20,17 @@ public:
 	void insertElement();
 
 	void deleteElement();
-	
+
 	void findMinElement();
 
-	void buildHeap();
+	void merge();
 
-    void merge();
+	void preorder();
 
-    void preorder();//
+	void inorder();
 
-    void inorder();//
+	void postorder();
 
-    void postorder();//
-
-    void levelorder();//
+	void levelorder();
 };
 #endif

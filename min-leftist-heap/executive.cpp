@@ -1,4 +1,4 @@
-#include "minLeftistHeap.h"
+#include "MinLeftistHeap.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,7 +7,7 @@ using namespace std;
 
 Executive::Executive(string filename)
 {
-  myHeap = new MinMaxHeap();
+  myHeap = new MinLeftistHeap();
   string curInput;
 
   ifstream infile;
@@ -87,50 +87,41 @@ void Executive::insertElement()
 
 void Executive::deleteElement()
 {
-  int val;
-  cout << "Enter the element to be removed: ";
-  cin >> val;
-
-  bool success = myHeap->remove(val);
+  bool success = myHeap->deleteElement(val);
 
   if (success)
   {
-    cout << to_string(val) << " has been removed successfully\n";
+    cout << "Min removed successfully\n";
   }
   else
   {
-    cout << to_string(val) << " was not found\n";
+    cout << "Min was not found\n";
   }
-}
-
-void Executive::buildHeap()
-{
-  myHeap->showHeap();
 }
 
 void Executive::merge()
 {
-  int H2 [3];
+  int H2[3];
   int newElement;
 
-  cout<<"Insert 3 elements for H2";
-  cin>>newElement; 
+  cout << "Insert 3 elements for H2";
+  cin >> newElement;
   H2[0] = newElement;
-  cin>>newElement; 
+  cin >> newElement;
   H2[1] = newElement;
-  cin>>newElement; 
+  cin >> newElement;
   H2[2] = newElement;
 
-  myHeap->concate
+  myHeap->concate();//////////////
 
-  cout<<"\nThe new level order traversal of the combinded tree is: \n";
+  cout << "\nThe new level order traversal of the combinded tree is: \n";
   myHeap->levelorder();
 }
 
 void Executive::findMinElement()
 {
   int min = myHeap->findMin();
-  cout<<"\nThe min element is "<<min;
+  cout << "\nThe min element is " << min;
 }
 
 void Executive::preorder()
