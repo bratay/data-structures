@@ -17,19 +17,6 @@ MinLeftistHeap::~MinLeftistHeap()
     }
 }
 
-void MinLeftistHeap::buildheap(string name)
-{
-    ifstream inp;
-    inp.open(name);
-    int num;
-    while (!inp.eof())
-    {
-        inp >> num;
-        insert(num);
-    }
-    inp.close();
-}
-
 void MinLeftistHeap::insert(int m_value)
 {
     LeftistNode *newnode = new LeftistNode(m_value);

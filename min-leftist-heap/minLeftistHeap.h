@@ -3,40 +3,32 @@
 #define MINLEFTISTHEAP_H
 
 #include <string>
-#include <fstream>
-#include <iostream>
-
-#include <limits>
-#include <cstddef>
 
 #include "LeftistNode.h"
 #include "Queue.h"
 
 using namespace std;
 
-template <typename T>
 class MinLeftistHeap
 {
 public:
     MinLeftistHeap();
     ~MinLeftistHeap();
 
-    void buildheap(string name);
-
-    void insert(T m_value);
+    void insert(int m_value);
 
     bool deletemin();
-    T findmin();
-    LeftistNode<T> *concate(LeftistNode<T> *a, LeftistNode<T> *b);
-    void adrank(LeftistNode<T> *m_root);
+    int findmin();
+    LeftistNode *concate(LeftistNode *a, LeftistNode *b);
+    void adrank(LeftistNode *m_root);
     void Preorder();
-    void PreorderHelper(LeftistNode<T> *m_rootPtr);
+    void PreorderHelper(LeftistNode *m_rootPtr);
     void Inorder();
-    void InorderHelper(LeftistNode<T> *m_rootPtr);
+    void InorderHelper(LeftistNode *m_rootPtr);
     void levelorder();
-    void levelorderHelper(LeftistNode<T> *m_rootPtr);
+    void levelorderHelper(LeftistNode *m_rootPtr);
 
 private:
-    LeftistNode<T> *root;
+    LeftistNode *root;
 };
 #endif
