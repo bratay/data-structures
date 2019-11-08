@@ -14,6 +14,8 @@ public:
     MinLeftistHeap();
     ~MinLeftistHeap();
 
+    LeftistNode* getRoot();
+
     void insert(int m_value);
 
     bool deletemin();

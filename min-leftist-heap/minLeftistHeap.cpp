@@ -57,6 +57,11 @@ int MinLeftistHeap::findmin()
     }
 }
 
+LeftistNode* MinLeftistHeap::getRoot()
+{
+    return root;
+}
+
 LeftistNode *MinLeftistHeap::concate(LeftistNode *a, LeftistNode *b)
 {
     if (a == nullptr)
