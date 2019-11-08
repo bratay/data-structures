@@ -1,4 +1,3 @@
-
 #ifndef MINLEFTISTHEAP_H
 #define MINLEFTISTHEAP_H
 

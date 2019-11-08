@@ -21,10 +21,18 @@ public:
 
 	void deleteElement();
 	
-	void minLevelElements();
-
-	void maxLevelElements();
+	void findMinElement();
 
 	void buildHeap();
+
+    void merge();
+
+    void preorder();//
+
+    void inorder();//
+
+    void postorder();//
+
+    void levelorder();//
 };
 #endif

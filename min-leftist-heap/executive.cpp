@@ -29,27 +29,36 @@ void Executive::runMenu()
 {
   int choice = 0;
   bool running = true;
-  cout << "\n1 - Build Heap\n";
-  cout << "2 - Insert\n";
-  cout << "3 - Delete\n";
-  cout << "4 - Min Level Elements\n";
-  cout << "5 - Max Level Elements\n";
-  cout << "6 - Exit\n";
+  cout << "\n1 - Insert\n";
+  cout << "2 - Merge\n";
+  cout << "2 - Delete Min\n";
+  cout << "3 - Find Min Element\n";
+  cout << "4 - Preorder\n";
+  cout << "5 - Inorder\n";
+  cout << "6 - Postorder\n";
+  cout << "7 - Levelorder\n";
+  cout << "8 - Exit\n";
   cout << ">>> ";
   cin >> choice;
   cout << "\n";
 
   if (choice == 1)
-    buildHeap();
-  else if (choice == 2)
     insertElement();
+  else if (choice == 2)
+    merge();
   else if (choice == 3)
     deleteElement();
   else if (choice == 4)
-    minLevelElements();
+    findMinElement();
   else if (choice == 5)
-    maxLevelElements();
+    preorder();
   else if (choice == 6)
+    inorder();
+  else if (choice == 7)
+    postorder();
+  else if (choice == 8)
+    levelorder();
+  else if (choice == 9)
     running = false;
   else
     cout << "\nChoose a menu item from 1-9\n";
@@ -99,12 +108,47 @@ void Executive::buildHeap()
   myHeap->showHeap();
 }
 
-void Executive::minLevelElements()
+void Executive::merge()
 {
-  myHeap->minTraversal();
+  int H2 [3];
+  int newElement;
+
+  cout<<"Insert 3 elements for H2";
+  cin>>newElement; 
+  H2[0] = newElement;
+  cin>>newElement; 
+  H2[1] = newElement;
+  cin>>newElement; 
+  H2[2] = newElement;
+
+  myHeap->concate
+
+  cout<<"\nThe new level order traversal of the combinded tree is: \n";
+  myHeap->levelorder();
 }
 
-void Executive::maxLevelElements()
+void Executive::findMinElement()
 {
-  myHeap->maxTraversal();
+  int min = myHeap->findMin();
+  cout<<"\nThe min element is "<<min;
+}
+
+void Executive::preorder()
+{
+  myHeap->preorder();
+}
+
+void Executive::inorder()
+{
+  myHeap->inorder();
+}
+
+void Executive::postorder()
+{
+  myHeap->postorder();
+}
+
+void Executive::levelorder()
+{
+  myHeap->levelorder();
 }
