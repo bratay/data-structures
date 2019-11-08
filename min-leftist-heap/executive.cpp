@@ -113,9 +113,9 @@ void Executive::merge()
   cin >> newElement;
   H2[2] = newElement;
 
-  MinLeftistHeap* H2Heap = new MinLeftistHeap();
+  MinLeftistHeap *H2Heap = new MinLeftistHeap();
 
-  for(int x = 0; x < 3; x++)
+  for (int x = 0; x < 3; x++)
   {
     H2Heap->insert(H2[x]);
   }
