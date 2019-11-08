@@ -1,5 +1,5 @@
-#ifndef LEFintISintNODE_H
-#define LEFintISintNODE_H
+#ifndef LEFTISTNODE_H
+#define LEFTISTNODE_H
 
 class LeftistNode
 {

@@ -1,4 +1,5 @@
 #include "MinLeftistHeap.h"
+#include "executive.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -77,17 +78,17 @@ void Executive::insertElement()
 
   if (success)
   {
-    cout << to_string(newElement) << " has been inserted successfully\n";
+    cout << to_string(newElement) << " is already in heap\n";
   }
   else
   {
-    cout << to_string(newElement) << " is already in heap\n";
+    cout << to_string(newElement) << " has been inserted successfully\n";
   }
 }
 
 void Executive::deleteElement()
 {
-  bool success = myHeap->deleteElement(val);
+  bool success = myHeap->deletemin();
 
   if (success)
   {
@@ -119,7 +120,7 @@ void Executive::merge()
     H2Heap->insert(H2[x]);
   }
 
-  myHeap->concate(myHeap->getRoot(), H2Heap->getRoot);
+  myHeap->concate(myHeap->getRoot(), H2Heap->getRoot());
 
   cout << "\nThe new level order traversal of the combinded tree is: \n";
   myHeap->levelorder();
@@ -127,23 +128,23 @@ void Executive::merge()
 
 void Executive::findMinElement()
 {
-  int min = myHeap->findMin();
+  int min = myHeap->findmin();
   cout << "\nThe min element is " << min;
 }
 
 void Executive::preorder()
 {
-  myHeap->preorder();
+  myHeap->Preorder();
 }
 
 void Executive::inorder()
 {
-  myHeap->inorder();
+  myHeap->Inorder();
 }
 
 void Executive::postorder()
 {
-  myHeap->postorder();
+  myHeap->Postorder();
 }
 
 void Executive::levelorder()

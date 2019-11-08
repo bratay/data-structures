@@ -17,8 +17,11 @@ MinLeftistHeap::~MinLeftistHeap()
     }
 }
 
-void MinLeftistHeap::insert(int m_value)
+bool MinLeftistHeap::insert(int m_value)
 {
+    if (find(m_value))
+        return false;
+
     LeftistNode *newnode = new LeftistNode(m_value);
     if (root == nullptr)
     {
@@ -28,6 +31,28 @@ void MinLeftistHeap::insert(int m_value)
     {
         root = concate(root, newnode);
     }
+
+    return true;
+}
+
+bool MinLeftistHeap::find(int val)
+{
+    return findHelp(root, val);
+}
+
+bool MinLeftistHeap::findHelp(LeftistNode *m_rootPtr, int val)
+{
+    if (m_rootPtr != nullptr)
+    {
+        if (m_rootPtr->getValue() == val)
+            return true;
+        if (findHelp(m_rootPtr->getLeftChild(), val))
+            return true;
+        if (findHelp(m_rootPtr->getRightChild(), val))
+            return true;
+    }
+
+    return false;
 }
 
 bool MinLeftistHeap::deletemin()
@@ -57,7 +82,7 @@ int MinLeftistHeap::findmin()
     }
 }
 
-LeftistNode* MinLeftistHeap::getRoot()
+LeftistNode *MinLeftistHeap::getRoot()
 {
     return root;
 }
@@ -129,6 +154,24 @@ void MinLeftistHeap::PreorderHelper(LeftistNode *m_rootPtr)
         cout << m_rootPtr->getValue() << " ";
         PreorderHelper(m_rootPtr->getLeftChild());
         PreorderHelper(m_rootPtr->getRightChild());
+    }
+    else
+    {
+    }
+}
+
+void MinLeftistHeap::Postorder()
+{
+    PostorderHelper(root);
+}
+
+void MinLeftistHeap::PostorderHelper(LeftistNode *m_rootPtr)
+{
+    if (m_rootPtr != nullptr)
+    {
+        PostorderHelper(m_rootPtr->getLeftChild());
+        PostorderHelper(m_rootPtr->getRightChild());
+        cout << m_rootPtr->getValue() << " ";
     }
     else
     {
