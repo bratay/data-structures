@@ -3,11 +3,10 @@
 
 #include "Node.h"
 
-template <typename T>
 class Queue
 {
 private:
-  Node<T> *qfront;
+  Node *qfront;
   int qlength;
 
 public:
@@ -17,13 +16,13 @@ public:
 
   bool isEmpty() const;
 
-  void enqueue(const T value);
+  void enqueue(const int value);
 
   bool dequeue();
 
-  T peekFront();
+  int peekFront();
 
-  T PrintFront();
+  int PrintFront();
 
 };
 #include "Queue.cpp"

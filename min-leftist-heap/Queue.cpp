@@ -1,14 +1,14 @@
 #include "Queue.h"
 
-template <typename T>
-Queue<T>::Queue()
+
+Queue::Queue()
 {
   qfront = nullptr;
   qlength = 0;
 }
 
-template <typename T>
-Queue<T>::~Queue()
+
+Queue::~Queue()
 {
   while (qfront != nullptr)
   {
@@ -16,8 +16,8 @@ Queue<T>::~Queue()
   }
 }
 
-template <typename T>
-bool Queue<T>::isEmpty() const
+
+bool Queue::isEmpty() const
 {
   if (qfront == nullptr)
   {
@@ -29,12 +29,12 @@ bool Queue<T>::isEmpty() const
   }
 }
 
-template <typename T>
-void Queue<T>::enqueue(const T value)
+
+void Queue::enqueue(const int value)
 {
-  Node<T> *cur = qfront;
-  Node<T> *temp = cur;
-  Node<T> *n = new Node<T>();
+  Node *cur = qfront;
+  Node *temp = cur;
+  Node *n = new Node();
 
   if (qlength == 0)
   {
@@ -59,10 +59,10 @@ void Queue<T>::enqueue(const T value)
   }
 }
 
-template <typename T>
-bool Queue<T>::dequeue()
+
+bool Queue::dequeue()
 {
-  Node<T> *cur = qfront;
+  Node *cur = qfront;
   if (qfront != nullptr) 
   {
     qfront = qfront->getNext();
@@ -77,11 +77,11 @@ bool Queue<T>::dequeue()
   }
 }
 
-template <typename T>
-T Queue<T>::peekFront()
+
+int Queue::peekFront()
 {
-  T front;
-  Node<T> *p = qfront;
+  int front;
+  Node *p = qfront;
   if (p != nullptr)
   {
     front = p->getItem();
@@ -94,8 +94,8 @@ T Queue<T>::peekFront()
   }
 }
 
-template <typename T>
-T Queue<T>::PrintFront()
+
+int Queue::PrintFront()
 {
   if (qfront != nullptr)
   {
