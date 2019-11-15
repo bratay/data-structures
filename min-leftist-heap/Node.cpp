@@ -2,37 +2,37 @@
 #include <fstream>
 #include <iostream>
 
-template <typename T>
-Node<T>::Node()
+
+Node::Node()
 {
   n_next = nullptr;
 }
 
-template <typename T>
-Node<T>::~Node()
+
+Node::~Node()
 {
 }
 
-template <typename T>
-void Node<T>::setItem(T value)
+
+void Node::setItem(int value)
 {
   n_value = value;
 }
 
-template <typename T>
-T Node<T>::getItem()
+
+int Node::getItem()
 {
   return n_value;
 }
 
-template <typename T>
-void Node<T>::setNext(Node<T> *next)
+
+void Node::setNext(Node *next)
 {
   n_next = next;
 }
 
-template <typename T>
-Node<T> *Node<T>::getNext()
+
+Node *Node::getNext()
 {
   return n_next;
 }

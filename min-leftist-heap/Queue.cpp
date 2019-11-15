@@ -1,12 +1,10 @@
 #include "Queue.h"
 
-
 Queue::Queue()
 {
   qfront = nullptr;
   qlength = 0;
 }
-
 
 Queue::~Queue()
 {
@@ -15,7 +13,6 @@ Queue::~Queue()
     dequeue();
   }
 }
-
 
 bool Queue::isEmpty() const
 {
@@ -29,12 +26,11 @@ bool Queue::isEmpty() const
   }
 }
 
-
 void Queue::enqueue(const int value)
 {
-  Node *cur = qfront;
-  Node *temp = cur;
-  Node *n = new Node();
+  LeftistNode *cur = qfront;
+  LeftistNode *temp = cur;
+  LeftistNode *n = new LeftistNode();
 
   if (qlength == 0)
   {
@@ -59,10 +55,9 @@ void Queue::enqueue(const int value)
   }
 }
 
-
 bool Queue::dequeue()
 {
-  Node *cur = qfront;
+  LeftistNode *cur = qfront;
   if (qfront != nullptr) 
   {
     qfront = qfront->getNext();
@@ -77,16 +72,16 @@ bool Queue::dequeue()
   }
 }
 
-
-int Queue::peekFront()
+LeftistNode Queue::peekFront()
 {
   int front;
-  Node *p = qfront;
+  LeftistNode *p = qfront;
   if (p != nullptr)
   {
     front = p->getItem();
     dequeue();
-    return front;
+    // return front;
+    return qfront;
   }
   else
   {
@@ -94,12 +89,12 @@ int Queue::peekFront()
   }
 }
 
-
-int Queue::PrintFront()
+LeftistNode Queue::PrintFront()
 {
   if (qfront != nullptr)
   {
-    return qfront->getItem();
+    // return qfront->getItem();
+    return qfront;
   }
   else
   {

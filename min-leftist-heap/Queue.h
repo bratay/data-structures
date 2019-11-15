@@ -1,12 +1,12 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "Node.h"
+#include "LeftistNode.h"
 
 class Queue
 {
 private:
-  Node *qfront;
+  LeftistNode *qfront;
   int qlength;
 
 public:
@@ -20,9 +20,9 @@ public:
 
   bool dequeue();
 
-  int peekFront();
+  LeftistNode peekFront();
 
-  int PrintFront();
+  LeftistNode PrintFront();
 
 };
 #include "Queue.cpp"

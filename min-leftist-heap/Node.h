@@ -1,24 +1,23 @@
 #ifndef Node_H
 #define Node_H
 
-template <typename T>
 class Node
 {
 private:
-  T n_value;
-  Node<T> *n_next;
+  int n_value;
+  Node *n_next;
   
 public:
   Node();
   ~Node();
 
-  void setItem(T value);
+  void setItem(int value);
 
-  T getItem();
+  int getItem();
 
-  void setNext(Node<T> *n_next);
+  void setNext(Node *n_next);
 
-  Node<T> *getNext();
+  Node *getNext();
 };
 #include "Node.cpp"
 #endif

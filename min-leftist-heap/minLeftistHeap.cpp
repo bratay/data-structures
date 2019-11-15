@@ -204,8 +204,8 @@ void MinLeftistHeap::levelorder()
 
 void MinLeftistHeap::levelorderHelper(LeftistNode *m_rootPtr)
 {
-    Queue<LeftistNode *> m;
-    Queue<LeftistNode *> n;
+    Queue m;
+    Queue n;
 
     if (m_rootPtr != nullptr)
     {
