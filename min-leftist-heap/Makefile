@@ -13,8 +13,5 @@ minLeftistHeap.o: MinLeftistHeap.cpp MinLeftistHeap.h
 leftistNode.o: LeftistNode.cpp LeftistNode.h
 	g++ -std=c++11 -g -Wall -c LeftistNode.cpp
 
-# Node.o: Node.cpp Node.h
-# 	g++ -std=c++11 -g -Wall -c Node.cpp
-
 clean:
 	rm *.o labeight
