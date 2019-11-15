@@ -4,7 +4,6 @@
 #include <string>
 
 #include "LeftistNode.h"
-#include "Queue.h"
 
 using namespace std;
 
@@ -12,7 +11,7 @@ class MinLeftistHeap
 {
 private:
     LeftistNode *root;
-    
+
 public:
     MinLeftistHeap();
     ~MinLeftistHeap();
