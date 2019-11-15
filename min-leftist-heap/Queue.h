@@ -2,11 +2,12 @@
 #define QUEUE_H
 
 #include "LeftistNode.h"
+#include "Node.h"
 
 class Queue
 {
 private:
-  LeftistNode *qfront;
+  Node* qfront;
   int qlength;
 
 public:
@@ -16,13 +17,13 @@ public:
 
   bool isEmpty() const;
 
-  void enqueue(const int value);
+  void enqueue( LeftistNode* value);
 
   bool dequeue();
 
-  LeftistNode peekFront();
+  LeftistNode* peekFront();
 
-  LeftistNode PrintFront();
+  LeftistNode* printFront();
 
 };
 #include "Queue.cpp"

@@ -14,13 +14,13 @@ Node::~Node()
 }
 
 
-void Node::setItem(int value)
+void Node::setItem(LeftistNode* value)
 {
   n_value = value;
 }
 
 
-int Node::getItem()
+LeftistNode* Node::getItem()
 {
   return n_value;
 }

@@ -1,19 +1,21 @@
 #ifndef Node_H
 #define Node_H
 
+#include "LeftistNode.h"
+
 class Node
 {
 private:
-  int n_value;
+  LeftistNode* n_value;
   Node *n_next;
   
 public:
   Node();
   ~Node();
 
-  void setItem(int value);
+  void setItem(LeftistNode* value);
 
-  int getItem();
+  LeftistNode* getItem();
 
   void setNext(Node *n_next);
 
