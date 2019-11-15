@@ -2,10 +2,18 @@
 #include <fstream>
 #include <iostream>
 
+#include "Node.h"
 
 Node::Node()
 {
   n_next = nullptr;
+}
+
+Node::Node(int value)
+{
+  n_next = nullptr;
+  LeftistNode* newNode = new LeftistNode(value);
+  n_value = newNode;
 }
 
 

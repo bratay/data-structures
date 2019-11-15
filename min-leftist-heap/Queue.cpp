@@ -26,15 +26,15 @@ bool Queue::isEmpty() const
   }
 }
 
-void Queue::enqueue( LeftistNode* value )
+void Queue::enqueue( int value )
 {
   Node *cur = qfront;
   Node *temp = cur;
-  Node *n = new Node();
+  Node *n = new Node(value);
 
   if (qlength == 0)
   {
-    n->setItem(value);
+    // n->setItem(value);
     qfront = n;
     qlength++;
     temp = nullptr;
@@ -48,7 +48,7 @@ void Queue::enqueue( LeftistNode* value )
       cur = cur->getNext(); 
     }
     temp->setNext(n);
-    n->setItem(value);
+    // n->setItem(value);
     qlength++;
     temp = nullptr;
     cur = nullptr;
@@ -72,16 +72,16 @@ bool Queue::dequeue()
   }
 }
 
-LeftistNode* Queue::peekFront()
+Node* Queue::peekFront()
 {
-  LeftistNode* front;
+  Node* front;
   Node* p = qfront;
   if (p != nullptr)
   {
-    front = p->getItem();
+    front = p;
     dequeue();
 
-    return qfront->getItem();;
+    return front;
   }
   else
   {
@@ -89,11 +89,11 @@ LeftistNode* Queue::peekFront()
   }
 }
 
-LeftistNode* Queue::printFront()
+Node* Queue::printFront()
 {
   if (qfront != nullptr)
   {
-    return qfront->getItem();
+    return qfront;
   }
   else
   {

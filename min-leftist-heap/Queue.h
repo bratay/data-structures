@@ -1,7 +1,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "LeftistNode.h"
 #include "Node.h"
 
 class Queue
@@ -17,13 +16,13 @@ public:
 
   bool isEmpty() const;
 
-  void enqueue( LeftistNode* value);
+  void enqueue( int value);
 
   bool dequeue();
 
-  LeftistNode* peekFront();
+  Node* peekFront();
 
-  LeftistNode* printFront();
+  Node* printFront();
 
 };
 #include "Queue.cpp"

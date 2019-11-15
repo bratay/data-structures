@@ -11,6 +11,7 @@ private:
   
 public:
   Node();
+  Node(int value);
   ~Node();
 
   void setItem(LeftistNode* value);
@@ -21,5 +22,5 @@ public:
 
   Node *getNext();
 };
-#include "Node.cpp"
+// #include "Node.cpp"
 #endif

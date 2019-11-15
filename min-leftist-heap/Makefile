@@ -1,5 +1,5 @@
-labeight: main.o executive.o MinLeftistHeap.o LeftistNode.o
-	g++ -std=c++11 -g -Wall main.o executive.o MinLeftistHeap.o LeftistNode.o -o labeight
+labeight: main.o executive.o MinLeftistHeap.o LeftistNode.o Node.o
+	g++ -std=c++11 -g -Wall main.o executive.o MinLeftistHeap.o LeftistNode.o Node.o -o labeight
 
 main.o: main.cpp executive.h
 	g++ -std=c++11 -g -Wall -c main.cpp
@@ -12,6 +12,9 @@ minLeftistHeap.o: MinLeftistHeap.cpp MinLeftistHeap.h
 
 leftistNode.o: LeftistNode.cpp LeftistNode.h
 	g++ -std=c++11 -g -Wall -c LeftistNode.cpp
+
+Node.o: Node.cpp Node.h
+	g++ -std=c++11 -g -Wall -c Node.cpp
 
 clean:
 	rm *.o labeight

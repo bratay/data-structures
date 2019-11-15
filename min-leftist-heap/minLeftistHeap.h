@@ -10,6 +10,9 @@ using namespace std;
 
 class MinLeftistHeap
 {
+private:
+    LeftistNode *root;
+    
 public:
     MinLeftistHeap();
     ~MinLeftistHeap();
@@ -33,8 +36,5 @@ public:
     void InorderHelper(LeftistNode *m_rootPtr);
     void levelorder();
     void levelorderHelper(LeftistNode *m_rootPtr);
-
-private:
-    LeftistNode *root;
 };
 #endif

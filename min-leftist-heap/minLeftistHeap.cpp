@@ -1,4 +1,5 @@
 #include <string>
+#include <queue>
 #include <iostream>
 #include "MinLeftistHeap.h"
 
@@ -204,42 +205,90 @@ void MinLeftistHeap::levelorder()
 
 void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
 {
-    Queue m;
-    Queue n;
+    queue<int> m;
+    queue<int> n;
 
     if (m_rootPtr != nullptr)
     {
-        m.enqueue(m_rootPtr);
-        while (m.isEmpty() == false || n.isEmpty() == false)
+        m.push(m_rootPtr->getValue());
+        while (m.empty() == false || n.empty() == false)
         {
-            while (m.isEmpty() == false)
+            while (m.empty() == false)
             {
-                if (m.printFront()->getLeftChild() != nullptr)
+                if (m.front() != -1)
                 {
-                    n.enqueue(m.printFront()->getLeftChild());
+                    n.push(m.front());
                 }
-                if (m.printFront()->getRightChild() != nullptr)
+                if (m.front() != -1)
                 {
-                    n.enqueue(m.printFront()->getRightChild());
+                    n.push(m.front());
                 }
-                cout << m.peekFront()->getValue() << " ";
+                int val = m.front();
+                m.pop();
+                cout << to_string(val) << " ";
                 // cout << m.printFront()->getValue() << " ";
             }
             cout << " " << endl;
-            while (n.isEmpty() == false)
+            while (n.empty() == false)
             {
-                if (n.printFront()->getLeftChild() != nullptr)
+                if (n.front() != -1)
                 {
-                    m.enqueue(n.printFront()->getLeftChild());
+                    m.push(n.front());
                 }
-                if (n.printFront()->getRightChild() != nullptr)
+                if (n.front() != -1)
                 {
-                    m.enqueue(n.printFront()->getRightChild());
+                    m.push(n.front());
                 }
-                cout << n.peekFront()->getValue() << " ";
+                int val = n.front();
+                n.pop();
+                cout << to_string(val) << " ";
                 // cout << m.printFront()->getValue() << " ";
             }
             cout << " " << endl;
         }
     }
 }
+
+// void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
+// {
+//     Queue m;
+//     Queue n;
+
+//     if (m_rootPtr != nullptr)
+//     {
+//         m.enqueue(m_rootPtr->getValue());
+//         while (m.isEmpty() == false || n.isEmpty() == false)
+//         {
+//             while (m.isEmpty() == false)
+//             {
+//                 if (m.printFront()->getItem()->getLeftChild() != nullptr)
+//                 {
+//                     n.enqueue(m.printFront()->getItem()->getLeftChild()->getValue());
+//                 }
+//                 if (m.printFront()->getItem()->getRightChild() != nullptr)
+//                 {
+//                     n.enqueue(m.printFront()->getItem()->getRightChild()->getValue());
+//                 }
+//                 cout << m.peekFront()->getItem()->getValue() << " ";
+//                 // cout << m.printFront()->getValue() << " ";
+//             }
+//             cout << " " << endl;
+//             while (n.isEmpty() == false)
+//             {
+//                 if (n.printFront()->getItem()->getLeftChild() != nullptr)
+//                 {
+//                     m.enqueue(n.printFront()->getItem()->getLeftChild()->getValue());
+//                 }
+//                 if (n.printFront()->getItem()->getRightChild() != nullptr)
+//                 {
+//                     m.enqueue(n.printFront()->getItem()->getRightChild()->getValue());
+//                 }
+//                 cout << n.peekFront()->getItem()->getValue() << " ";
+//                 // cout << m.printFront()->getValue() << " ";
+//             }
+//             cout << " " << endl;
+//         }
+//     }
+// }
+
+
