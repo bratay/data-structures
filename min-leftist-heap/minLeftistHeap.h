@@ -16,7 +16,7 @@ public:
     MinLeftistHeap();
     ~MinLeftistHeap();
 
-    LeftistNode* getRoot();
+    LeftistNode *getRoot();
 
     bool find(int val);
     bool findHelp(LeftistNode *m_rootPtr, int val);

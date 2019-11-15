@@ -156,9 +156,6 @@ void MinLeftistHeap::PreorderHelper(LeftistNode *m_rootPtr)
         PreorderHelper(m_rootPtr->getLeftChild());
         PreorderHelper(m_rootPtr->getRightChild());
     }
-    else
-    {
-    }
 }
 
 void MinLeftistHeap::Postorder()
@@ -173,9 +170,6 @@ void MinLeftistHeap::PostorderHelper(LeftistNode *m_rootPtr)
         PostorderHelper(m_rootPtr->getLeftChild());
         PostorderHelper(m_rootPtr->getRightChild());
         cout << m_rootPtr->getValue() << " ";
-    }
-    else
-    {
     }
 }
 
@@ -192,18 +186,16 @@ void MinLeftistHeap::InorderHelper(LeftistNode *m_rootPtr)
         cout << m_rootPtr->getValue() << " ";
         InorderHelper(m_rootPtr->getRightChild());
     }
-    else
-    {
-    }
 }
 
 void MinLeftistHeap::levelorder()
 {
     levelorderHelper(root);
-    cout << "" << endl;
+    cout << "\n"
+         << endl;
 }
 
-void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
+void MinLeftistHeap::levelorderHelper(LeftistNode *m_rootPtr)
 {
     queue<int> m;
     queue<int> n;
@@ -211,22 +203,22 @@ void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
     if (m_rootPtr != nullptr)
     {
         m.push(m_rootPtr->getValue());
+        LeftistNode *cur = m_rootPtr;
         while (m.empty() == false || n.empty() == false)
         {
             while (m.empty() == false)
             {
-                if (m.front() != -1)
+                if (cur->getRightChild() != nullptr)
                 {
-                    n.push(m.front());
+                    n.push(cur->getRightChild()->getValue());
                 }
-                if (m.front() != -1)
+                if (cur->getLeftChild() != nullptr)
                 {
-                    n.push(m.front());
+                    n.push(cur->getLeftChild()->getValue());
                 }
                 int val = m.front();
                 m.pop();
                 cout << to_string(val) << " ";
-                // cout << m.printFront()->getValue() << " ";
             }
             cout << " " << endl;
             while (n.empty() == false)
@@ -242,53 +234,8 @@ void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
                 int val = n.front();
                 n.pop();
                 cout << to_string(val) << " ";
-                // cout << m.printFront()->getValue() << " ";
             }
             cout << " " << endl;
         }
     }
 }
-
-// void MinLeftistHeap::levelorderHelper(LeftistNode* m_rootPtr)
-// {
-//     Queue m;
-//     Queue n;
-
-//     if (m_rootPtr != nullptr)
-//     {
-//         m.enqueue(m_rootPtr->getValue());
-//         while (m.isEmpty() == false || n.isEmpty() == false)
-//         {
-//             while (m.isEmpty() == false)
-//             {
-//                 if (m.printFront()->getItem()->getLeftChild() != nullptr)
-//                 {
-//                     n.enqueue(m.printFront()->getItem()->getLeftChild()->getValue());
-//                 }
-//                 if (m.printFront()->getItem()->getRightChild() != nullptr)
-//                 {
-//                     n.enqueue(m.printFront()->getItem()->getRightChild()->getValue());
-//                 }
-//                 cout << m.peekFront()->getItem()->getValue() << " ";
-//                 // cout << m.printFront()->getValue() << " ";
-//             }
-//             cout << " " << endl;
-//             while (n.isEmpty() == false)
-//             {
-//                 if (n.printFront()->getItem()->getLeftChild() != nullptr)
-//                 {
-//                     m.enqueue(n.printFront()->getItem()->getLeftChild()->getValue());
-//                 }
-//                 if (n.printFront()->getItem()->getRightChild() != nullptr)
-//                 {
-//                     m.enqueue(n.printFront()->getItem()->getRightChild()->getValue());
-//                 }
-//                 cout << n.peekFront()->getItem()->getValue() << " ";
-//                 // cout << m.printFront()->getValue() << " ";
-//             }
-//             cout << " " << endl;
-//         }
-//     }
-// }
-
-

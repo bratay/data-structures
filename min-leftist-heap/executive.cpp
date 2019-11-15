@@ -31,13 +31,13 @@ void Executive::runMenu()
   bool running = true;
   cout << "\n1 - Insert\n";
   cout << "2 - Merge\n";
-  cout << "2 - Delete Min\n";
-  cout << "3 - Find Min Element\n";
-  cout << "4 - Preorder\n";
-  cout << "5 - Inorder\n";
-  cout << "6 - Postorder\n";
-  cout << "7 - Levelorder\n";
-  cout << "8 - Exit\n";
+  cout << "3 - Delete Min\n";
+  cout << "4 - Find Min Element\n";
+  cout << "5 - Preorder\n";
+  cout << "6 - Inorder\n";
+  cout << "7 - Postorder\n";
+  cout << "8 - Levelorder\n";
+  cout << "9 - Exit\n";
   cout << ">>> ";
   cin >> choice;
   cout << "\n";
@@ -75,7 +75,7 @@ void Executive::insertElement()
 
   bool success = myHeap->insert(newElement);
 
-  if (success)
+  if (success == false)
   {
     cout << to_string(newElement) << " is already in heap\n";
   }
@@ -104,7 +104,7 @@ void Executive::merge()
   int H2[3];
   int newElement;
 
-  cout << "Insert 3 elements for H2";
+  cout << "Insert 3 elements for H2: \n";
   cin >> newElement;
   H2[0] = newElement;
   cin >> newElement;
@@ -116,13 +116,12 @@ void Executive::merge()
 
   for (int x = 0; x < 3; x++)
   {
-    H2Heap->insert(H2[x]);
+    myHeap->insert(H2[x]);
   }
 
   myHeap->concate(myHeap->getRoot(), H2Heap->getRoot());
 
   cout << "\nThe new level order traversal of the combinded tree is: \n";
-  myHeap->levelorder();
 }
 
 void Executive::findMinElement()
@@ -148,5 +147,5 @@ void Executive::postorder()
 
 void Executive::levelorder()
 {
-  myHeap->levelorder();
+  myHeap->Preorder();
 }
