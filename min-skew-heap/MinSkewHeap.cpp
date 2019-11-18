@@ -12,9 +12,7 @@ MinSkewHeap::MinSkewHeap()
 MinSkewHeap::~MinSkewHeap()
 {
     while (root != nullptr)
-    {
         deletemin();
-    }
 }
 
 bool MinSkewHeap::insert(int m_value)
@@ -22,15 +20,12 @@ bool MinSkewHeap::insert(int m_value)
     if (find(m_value))
         return false;
 
-    LeftistNode *newnode = new LeftistNode(m_value);
+    SkewNode *newnode = new SkewNode(m_value);
+
     if (root == nullptr)
-    {
         root = newnode;
-    }
     else
-    {
         root = concate(root, newnode);
-    }
 
     return true;
 }
@@ -40,7 +35,7 @@ bool MinSkewHeap::find(int val)
     return findHelp(root, val);
 }
 
-bool MinSkewHeap::findHelp(LeftistNode *m_rootPtr, int val)
+bool MinSkewHeap::findHelp(SkewNode *m_rootPtr, int val)
 {
     if (m_rootPtr != nullptr)
     {
@@ -58,12 +53,10 @@ bool MinSkewHeap::findHelp(LeftistNode *m_rootPtr, int val)
 bool MinSkewHeap::deletemin()
 {
     if (root == nullptr)
-    {
         return false;
-    }
     else
     {
-        LeftistNode *newroot = concate(root->getLeftChild(), root->getRightChild());
+        SkewNode *newroot = concate(root->getLeftChild(), root->getRightChild());
         delete root;
         root = newroot;
         return true;
@@ -73,57 +66,51 @@ bool MinSkewHeap::deletemin()
 int MinSkewHeap::findmin()
 {
     if (root == nullptr)
-    {
         return -1;
-    }
     else
-    {
         return root->getValue();
-    }
 }
 
-LeftistNode *MinSkewHeap::getRoot()
+SkewNode *MinSkewHeap::getRoot()
 {
     return root;
 }
 
-LeftistNode *MinSkewHeap::concate(LeftistNode *a, LeftistNode *b)
+SkewNode *MinSkewHeap::concate(SkewNode *h1, SkewNode *h2)
 {
-    if (a == nullptr)
+
+    if (h1 == NULL)
     {
-        return b;
+        return h2;
     }
-    else if (b == nullptr)
+    else if (h2 == NULL)
     {
-        return a;
-    }
-    else if (a->getValue() > b->getValue())
-    {
-        swap(a, b);
-    }
-    a->setRightChild(concate(a->getRightChild(), b));
-    adrank(a);
-    if (a->getLeftChild() != nullptr)
-    {
-        if (a->getLeftChild()->getRank() < a->getRightChild()->getRank())
-        {
-            LeftistNode *temp = a->getLeftChild();
-            a->setLeftChild(a->getRightChild());
-            a->setRightChild(temp);
-            temp = nullptr;
-        }
+        return h1;
     }
     else
     {
-        LeftistNode *temp = a->getLeftChild();
-        a->setLeftChild(a->getRightChild());
-        a->setRightChild(temp);
-        temp = nullptr;
+        if (h1->getValue() > h2->getValue())
+        {
+            SkewNode *temp;
+
+            temp = h1;
+            h1 = h2;
+            h2 = temp;
+
+            temp = nullptr;
+        }
+
+        SkewNode *temp;
+
+        temp = h1->getRightChild();
+        h1->setRightChild(h1->getLeftChild());
+        h1->setLeftChild(concate(temp, h2));
+
+        return h1;
     }
-    return a;
 }
 
-void MinSkewHeap::adrank(LeftistNode *m_root)
+void MinSkewHeap::adrank(SkewNode *m_root)
 {
     if (m_root->getLeftChild() == nullptr || m_root->getRightChild() == nullptr)
     {
@@ -147,16 +134,13 @@ void MinSkewHeap::Preorder()
     PreorderHelper(root);
 }
 
-void MinSkewHeap::PreorderHelper(LeftistNode *m_rootPtr)
+void MinSkewHeap::PreorderHelper(SkewNode *m_rootPtr)
 {
     if (m_rootPtr != nullptr)
     {
         cout << m_rootPtr->getValue() << " ";
         PreorderHelper(m_rootPtr->getLeftChild());
         PreorderHelper(m_rootPtr->getRightChild());
-    }
-    else
-    {
     }
 }
 
@@ -165,16 +149,13 @@ void MinSkewHeap::Postorder()
     PostorderHelper(root);
 }
 
-void MinSkewHeap::PostorderHelper(LeftistNode *m_rootPtr)
+void MinSkewHeap::PostorderHelper(SkewNode *m_rootPtr)
 {
     if (m_rootPtr != nullptr)
     {
         PostorderHelper(m_rootPtr->getLeftChild());
         PostorderHelper(m_rootPtr->getRightChild());
         cout << m_rootPtr->getValue() << " ";
-    }
-    else
-    {
     }
 }
 
@@ -183,16 +164,13 @@ void MinSkewHeap::Inorder()
     InorderHelper(root);
 }
 
-void MinSkewHeap::InorderHelper(LeftistNode *m_rootPtr)
+void MinSkewHeap::InorderHelper(SkewNode *m_rootPtr)
 {
     if (m_rootPtr != nullptr)
     {
         InorderHelper(m_rootPtr->getLeftChild());
         cout << m_rootPtr->getValue() << " ";
         InorderHelper(m_rootPtr->getRightChild());
-    }
-    else
-    {
     }
 }
 
@@ -202,10 +180,10 @@ void MinSkewHeap::levelorder()
     cout << "" << endl;
 }
 
-void MinSkewHeap::levelorderHelper(LeftistNode *m_rootPtr)
+void MinSkewHeap::levelorderHelper(SkewNode *m_rootPtr)
 {
-    Queue<LeftistNode *> m;
-    Queue<LeftistNode *> n;
+    Queue<SkewNode *> m;
+    Queue<SkewNode *> n;
 
     if (m_rootPtr != nullptr)
     {

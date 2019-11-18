@@ -4,7 +4,8 @@
 class SkewNode
 {
 private:
-  int value, rank;
+  int value;
+  int rank;
   SkewNode *leftchild;
   SkewNode *rightchild;
 

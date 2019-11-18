@@ -1,7 +1,7 @@
 #ifndef EXECUTIVE_H
 #define EXECUTIVE_H
 #include <string>
-#include "MinLeftistHeap.h"
+#include "MinSkewHeap.h"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ class Executive
 {
 
 private:
-	MinLeftistHeap *myHeap = nullptr;
+	MinSkewHeap *myHeap = nullptr;
 
 public:
 	Executive(string filename);
