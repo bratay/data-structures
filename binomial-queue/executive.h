@@ -2,7 +2,7 @@
 #define EXECUTIVE_H
 #include <string>
 
-#include "binomialQueue.h"
+#include "BinomialQueue.h"
 
 using namespace std;
 
@@ -16,12 +16,12 @@ public:
 	Executive(string filename);
 	~Executive();
 
+	void insertItem();
+
+	void deletemin();
+
+	void printLevelOrder();
+
 	void runMenu();
-
-	void insertElement();
-
-	void delete();
-
-	void levelorder();
 };
 #endif

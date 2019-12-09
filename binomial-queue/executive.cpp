@@ -7,17 +7,18 @@ using namespace std;
 
 Executive::Executive(string filename)
 {
-  myHeap = new MinLeftistHeap();
-  string curInput;
+  myBiQue = new BinomialQueue();
+  string curInput = "";
 
   ifstream infile;
   infile.open(filename);
 
   while (getline(infile, curInput, ','))
   {
-    myHeap->insert(stoi(curInput));
+    myBiQue->insert(stoi(curInput));
   }
 
+  infile.close();
   runMenu();
 }
 
@@ -27,57 +28,58 @@ Executive::~Executive()
 
 void Executive::runMenu()
 {
+
   int choice = 0;
-  bool running = true;
-  cout << "\n1 - Insert\n";
-  cout << "2 - Delete Min\n";
-  cout << "3 - Levelorder\n";
-  cout << "4 - Exit\n";
-  cout << ">>> ";
-  cin >> choice;
-  cout << "\n";
 
-  if (choice == 1)
-    insertElement();
-  else if (choice == 2)
-    delete ();
-  else if (choice == 3)
-    levelOrder();
-  else if (choice == 4)
-    running = false;
-  else
-    cout << "\nChoose a menu item from 1-9\n";
-
-  if (running == true)
-    runMenu();
-}
-
-void Executive::insertElement()
-{
-  int newElement;
-  cout << "Enter the element to be inserted: ";
-  cin >> newElement;
-
-  bool success = myHeap->insert(newElement);
-
-  cout << to_string(newElement) << " has been inserted successfully\n";
-}
-
-void Executive::delete ()
-{
-  int min = myHeap->deletemin();
-
-  if (min != -1)
+  while (choice != 4)
   {
-    cout << "Min removed successfully\n";
-  }
-  else
-  {
-    cout << "Queue is empty\n";
+
+    cout << "1 - Insert\n"
+         << "2 - Delete Minimum Element\n"
+         << "3 - Levelorder Traversal\n"
+         << "4 - Exit\n"
+         << "\n   :";
+
+    cin >> choice;
+
+    switch (choice)
+    {
+    case 1:
+      insertItem();
+      break;
+    case 2:
+      deletemin();
+      break;
+    case 3:
+      printLevelOrder();
+      break;
+    case 4:
+    default:
+      if (choice != 4)
+      {
+        cout << "Input integer from 1 - 4\n";
+      }
+      break;
+    }
   }
 }
 
-void Executive::levelorder()
+void Executive::insertItem()
 {
-  myHeap->levelOrder();
+  int number;
+
+  cout << "Enter a number: ";
+  cin >> number;
+
+  myBiQue->insert(number);
+}
+
+void Executive::deletemin()
+{
+  myBiQue->deleteMin();
+}
+
+void Executive::printLevelOrder()
+{
+  myBiQue->levelOrderDisplay();
 }
