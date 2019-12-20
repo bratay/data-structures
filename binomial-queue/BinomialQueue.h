@@ -1,3 +1,5 @@
+
+
 #ifndef BINOMIAL_QUEUE
 #define BINOMIAL_QUEUE
 
@@ -20,6 +22,19 @@ struct bqNode
 
 class BinomialQueue
 {
+public:
+    BinomialQueue();
+
+    ~BinomialQueue();
+
+    bool isEmpty() const;
+
+    void insert(int aKey);
+
+    void deleteMin();
+
+    void levelOrderDisplay();
+
 private:
     void destroyTree(bqNode *aNode);
 
@@ -33,19 +48,7 @@ private:
 
     const static int SIZE = 10;
     bqNode *mTrees[SIZE];
-    int mCurrentSize = 0;
-
-public:
-    BinomialQueue();
-
-    ~BinomialQueue();
-
-    bool isEmpty() const;
-
-    void insert(int aKey);
-
-    void deleteMin();
-
-    void levelOrderDisplay();
+    int mCurrentSize;
 };
+
 #endif

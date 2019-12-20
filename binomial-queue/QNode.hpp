@@ -1,3 +1,5 @@
+
+
 template <class T>
 QNode<T>::QNode()
 {

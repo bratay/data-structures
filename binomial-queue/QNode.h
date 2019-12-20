@@ -1,3 +1,4 @@
+
 #ifndef QNODE_H
 #define QNODE_H
 
@@ -22,5 +23,5 @@ private:
     QNode<T> *m_next;
 };
 
-#include "QNode.h"
+#include "QNode.hpp"
 #endif
