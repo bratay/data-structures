@@ -1,5 +1,8 @@
 
-s = set of all engaged pairs
+data = open("test-inputs/input_size_3.txt","r")
+data.close()
+
+s = {}
 
 while( (a man is free) and (has not proposed to every woman) ):
     man = choose a man
