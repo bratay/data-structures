@@ -1,8 +1,8 @@
 import numpy as np
 import sys
-fileName = "test-inputs/input_size_3.txt"  # str(sys.argv)[1]
 
-# data = open("test-inputs/input_size_3.txt","r")
+fileName =  str(sys.argv[1]) 
+
 data = open(fileName, "r")
 
 n = int(data.readline())
@@ -14,6 +14,7 @@ for x in data:
 del temp[0]
 del temp[n]
 
+result = []
 s = []  # matrix with married couples # 0 base
 mp = []  # men pref matrix # 0 based but w is 1 based
 wp = []  # women pref matrix # 0 based but m is 1 based
@@ -24,6 +25,7 @@ numProposed = []  # how many times have they proposed
 
 for i in range(0, n):
     row = temp[i]
+    result.append(i)
     s.append(-1)
     singleMen.append(i)
     numProposed.append(0)
@@ -62,5 +64,10 @@ while(len(singleMen) != 0 and numProposed[singleMen[0]] < n):
             s[w] = man
             # unengaged( curMan )
             singleMen.append(curMan)
+            
+#reformat and print results
+for i in range(n):
+    result[ s[i] ] = i+1
 
-print(s)
+for i in range(n):
+    print(str( i + 1) + ", " + str(result[i]))
