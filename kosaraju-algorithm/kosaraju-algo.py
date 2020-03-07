@@ -1,4 +1,3 @@
-# import numpy as np
 import sys
 
 graph = {}
@@ -8,22 +7,18 @@ n = 0
 result = []
 vis = {}
 stack = []
+curGroup = []
 
-
-def printResult():
-    return
-
-def inverseDfs(start, group):
+def inverseDfs(start):
     if(vis[start] == True):
         return 
     
     vis[start] = True
-    group.append(int(start))
-
+    
+    curGroup.append( int(start) )
+    
     for child in range(0, len(graphInverse[start])):
-        group = inverseDfs(graphInverse[start][child], group)
-
-    return group
+        inverseDfs(graphInverse[start][child])
 
 def dfs(start):
     if(vis[start] == True):
@@ -49,18 +44,18 @@ def findStrongComponents(length):
         first = stack[len(stack) - 1]
         stack.pop(len(stack) - 1)
         
-        curGroup = []
         if(vis[first] == False):
-            curGroup  = inverseDfs(first, curGroup)
-            result.append(curGroup)
-            curGroup = []
+            inverseDfs(first)
+            curGroup.sort()
             
-    printResult()
+            for cur in curGroup:
+                print(str(cur) + " ", end = '')
+            print("")
+        curGroup.clear()
 
 
 def initialize():
-    # fileName = str(sys.argv[1])
-    fileName = "test-inputs/input_size_3.txt"
+    fileName = str(sys.argv[1])
 
     data = open(fileName, "r")
 
@@ -75,6 +70,10 @@ def initialize():
         graph[x] = []
         graphInverse[x] = []
 
+    length = len(temp)
+    for x in range( 0 , n - length ):
+        temp.append("")
+        
     curRow = []
     for x in range(0, n):
         for i in range(0, len(temp[x])):
