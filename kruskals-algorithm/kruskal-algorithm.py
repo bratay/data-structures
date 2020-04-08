@@ -54,15 +54,13 @@ for x in range(0, n):
     input.append(curRow)   
     curRow = [] 
     
-
-data.close()    
+data.close()
         
-sortedWeight = [[None]] * n
+sortedWeight = []
+for x in range(0, n + 1):
+    sortedWeight.append([])
 
-
-# for i in range(0, n):
-#     for j in range( i + 1, n):
-#         if(input[i][j] != 0):
-#             sortedWeight[ input[i][j] ].append( [i,j] )
-
-
+for i in range(0, n):
+    for j in range( i + 1, n):
+        if(input[i][j] != 0):
+            sortedWeight[ input[i][j] ].append( [i,j] )
